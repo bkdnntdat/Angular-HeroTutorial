@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersSevice } from './users.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bookstore';
+
+  constructor(
+    private usersSevice: UsersSevice,
+  ){
+
+  }
+
+  ngOnInit(){
+    this.usersSevice.getUsers()
+        .subscribe(data => {
+            console.log(data);
+        }
+        );   
+}
 }
